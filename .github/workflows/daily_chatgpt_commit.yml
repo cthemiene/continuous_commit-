@@ -3,6 +3,7 @@ name: Daily ChatGPT Commit
 on:
   schedule:
     - cron: '0 9 * * *'  # Runs daily at 9 AM UTC
+  workflow_dispatch:  # Allows manual triggering from GitHub Actions tab
 
 jobs:
   daily_chatgpt_commit:
@@ -17,42 +18,69 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: |
-          pip install openai
+        run: pip install openai
 
-      - name: Generate commit message with GPT-4.5-preview
+      - name: Generate ChatGPT Commit Message
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
-          python -c "
-import openai
-import os
-import datetime
+          import openai
+          import os
+          from datetime import datetime
 
-openai.api_key = os.getenv('OPENAI_API_KEY')
+          openai.api_key = os.getenv('OPENAI_API_KEY')
 
-response = openai.ChatCompletion.create(
-    model='gpt-4.5-preview',
-    messages=[
-        {'role': 'system', 'content': 'You are generating daily commit messages for a mobile application project. The app ingests webcam video to analyze parking lot occupancy and predict optimal visitation times. Each commit message should briefly describe daily updates, such as improvements to webcam integration, predictive modeling, UI/UX enhancements, performance optimizations, or feature updates.'}
-    ]
-)
+          response = openai.ChatCompletion.create(
+              model='gpt-4.5-preview',
+              messages=[{
+                  'role': 'system',
+                  'content': ('You are generating a daily Git commit message for a mobile '
+                              'application project that ingests webcam video to identify parking '
+                              'lot occupancy and predict the best times to visit. Each commit '
+                              'should represent daily progress, such as updates to the UI, '
+                              'improving prediction accuracy, enhancing webcam data handling, '
+                              'or other relevant development activities.')
+              }]
+          )
 
-commit_message = response.choices[0].message.content.strip()
+        run: |
+          import openai
+          import os
+          from datetime import datetime
 
-with open('daily_log.txt', 'a') as f:
-    timestamp = datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')
-    f.write(f'{timestamp}: {commit_message}\n')
+          openai.api_key = os.getenv("OPENAI_API_KEY")
 
-print(f'COMMIT_MESSAGE={commit_message}' >> os.environ['GITHUB_ENV'])
-"
+          response = openai.ChatCompletion.create(
+              model='gpt-4.5-preview',
+              messages=[
+                  {'role': 'system', 'content': os.getenv('SYSTEM_PROMPT')}
+              ]
+          )
+
+          commit_message = response.choices[0].message.content.strip()
+          timestamp = datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')
+
+          with open('daily_log.txt', 'a') as f:
+              f.write(f'{timestamp}: {commit_message}\n')
+
+          # Save commit message for next step
+          with open(os.getenv('GITHUB_ENV'), 'a') as env_file:
+              env_file_entry = f'COMMIT_MESSAGE={commit_message}\n'
+              env_file_entry = env_file_entry.replace('\n', '').replace('"', '\\"')
+              env_file_entry += '\n'
+              env_file_entry += f'TIMESTAMP={timestamp}\n'
+              f.write(env_file_entry)
+
+        env:
+          SYSTEM_PROMPT: |
+            You are generating daily commit messages for a mobile application project. 
+            The app ingests webcam video to analyze parking lot occupancy and predict optimal visitation times.
+            Each commit should be brief and professionally written, focusing on improvements or new developments such as UI enhancements, performance optimizations, webcam integration updates, or accuracy improvements in prediction models.
 
       - name: Commit and Push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add daily_log.txt
-          git commit -m "${{ env.COMMIT_MESSAGE }}"
+          git commit -m "${{ env.COMMIT_MESSAGE }} - ${{ env.TIMESTAMP }}" || echo "Nothing to commit"
           git push origin main
