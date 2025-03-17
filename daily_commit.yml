@@ -1,0 +1,60 @@
+name: Daily ChatGPT Commit
+
+on:
+  schedule:
+    - cron: '0 9 * * *'  # Runs every day at 9 AM UTC
+  workflow_dispatch:    # Allow manual triggering if desired
+
+jobs:
+  commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      # Install dependencies
+      - name: Install dependencies
+        run: |
+          pip install openai
+
+      # Generate commit message using ChatGPT
+      - name: Generate ChatGPT commit
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          python -c "
+import openai
+import datetime
+
+openai.api_key = os.getenv('OPENAI_API_KEY')
+
+prompt = '''You are working on a mobile app that ingests webcam video to identify parking lot occupancy and predicts the best time to visit. Write a concise commit message for a daily automated update to the project, such as updating the UI, improving the predictive model, optimizing webcam data ingestion, or general improvements.'''
+
+response = openai.ChatCompletion.create(
+    model='gpt-4.5-preview',
+    messages=[{'role': 'system', 'content': prompt}]
+)
+
+commit_message = response.choices[0].message.content.strip()
+timestamp = datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')
+
+with open('daily_log.txt', 'a') as file:
+    file.write(f'{timestamp}: {commit_message}\n')
+
+print(f'Commit message: {commit_message}')
+
+      # Commit and push changes
+      - name: Commit and Push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add daily_log.txt
+          git commit -m "${{ env.COMMIT_MSG }}" || echo "No changes to commit"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
