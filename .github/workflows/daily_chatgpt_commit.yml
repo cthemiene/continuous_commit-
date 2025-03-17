@@ -25,6 +25,7 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
+          COMMIT_MESSAGE=$(python scripts/daily_commit.py)
           echo "COMMIT_MESSAGE=$(python scripts/daily_commit.py)" >> $GITHUB_ENV
 
       - name: Commit and push
