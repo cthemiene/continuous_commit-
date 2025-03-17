@@ -11,7 +11,7 @@ Write a concise, professional daily commit message summarizing today's update.
 '''
 
 response = client.chat.completions.create(
-    model='gpt-4.5-preview',
+    model='gpt-3.5-turbo',
     messages=[{'role': 'system', 'content': prompt}],
     max_tokens=60,
 )
