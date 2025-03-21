@@ -5,8 +5,6 @@ from datetime import datetime
 client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 
 prompt = '''
-You are generating daily commit messages for a mobile app project. 
-The app ingests webcam video to detect parking lot occupancy and predicts optimal visitation times.
 Write a concise, professional daily commit message summarizing today's update.
 '''
 
