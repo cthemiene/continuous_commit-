@@ -19,3 +19,5 @@ Commit made on Mon 03/17/2025 at 15:49:40.72
 2025-03-24 16:22:11 UTC: Refactored code and optimized performance for enhanced efficiency.
 2025-03-25 09:25:23 UTC: Implemented user authentication functionality by integrating a secure login system using OAuth 2.0.
 2025-03-25 09:25:24 UTC: Refactored code to improve efficiency and readability. Made minor UI enhancements for better user experience.
+2025-03-26 09:25:08 UTC: Implemented new feature to allow users to reset their passwords by sending a reset link to their email addresses. Fixed minor bugs and completed backend testing.
+2025-03-26 09:25:09 UTC: Refactored and optimized code for better performance.
