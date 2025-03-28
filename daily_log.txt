@@ -23,3 +23,5 @@ Commit made on Mon 03/17/2025 at 15:49:40.72
 2025-03-26 09:25:09 UTC: Refactored and optimized code for better performance.
 2025-03-27 09:25:53 UTC: Implemented authentication feature for user login and registration. Added validation for input fields to enhance security and user experience. Fixed minor bugs and improved overall app performance. Ready for testing and feedback.
 2025-03-27 09:25:55 UTC: Refactored code for improved efficiency and readability.
+2025-03-28 09:26:10 UTC: Added new styling to the blog post section for better readability and enhanced user experience.
+2025-03-28 09:26:11 UTC: Implemented new feature to allow users to filter search results by category.
