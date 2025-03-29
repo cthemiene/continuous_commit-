@@ -25,3 +25,5 @@ Commit made on Mon 03/17/2025 at 15:49:40.72
 2025-03-27 09:25:55 UTC: Refactored code for improved efficiency and readability.
 2025-03-28 09:26:10 UTC: Added new styling to the blog post section for better readability and enhanced user experience.
 2025-03-28 09:26:11 UTC: Implemented new feature to allow users to filter search results by category.
+2025-03-29 09:22:43 UTC: Refactored code for improved efficiency and readability.
+2025-03-29 09:22:44 UTC: Implemented user authentication functionality using JWT and added error handling for invalid login credentials.
