@@ -1,62 +1,76 @@
-# Continuous Commit - AI-Powered Traffic Prediction Mobile App
+# 🤖 Daily ChatGPT Commit
 
-## Overview
-This project leverages OpenAI's API Assistant to automate continuous commits for a robust, full-stack mobile application dedicated to predicting traffic conditions. Utilizing cutting-edge machine learning models provided by OpenAI, this project delivers accurate traffic forecasting and dynamic routing recommendations directly to users via an intuitive mobile interface.
+This repository automates a **daily Git commit** that generates a commit message using **OpenAI's GPT model**. It runs every day at **9 AM UTC** via GitHub Actions and appends the AI-generated message to a `daily_log.txt` file.
 
-## Features
-- **Continuous Automated Commits:** Ensures continuous integration and deployment (CI/CD), keeping the app consistently up-to-date.
-- **Full-Stack Integration:** Seamlessly combines frontend mobile application development with backend predictive analytics.
-- **Traffic Prediction AI:** Powered by OpenAI's GPT-based APIs to analyze historical data and provide accurate, real-time traffic forecasts.
-- **Dynamic Routing Recommendations:** Suggests optimal routes based on predictive analytics to help users avoid traffic.
-- **Cross-Platform Mobile Development:** Built using modern frameworks like Flutter for efficient performance across Android and iOS.
+---
 
-## Architecture
+## 📌 What It Does
 
-### Frontend
-- **Flutter:** Cross-platform UI toolkit for rapid and sleek mobile app development.
-- **Provider:** Efficient state management for streamlined data handling and app responsiveness.
+- Uses a scheduled GitHub Action to run daily.
+- Calls OpenAI's GPT-3.5 Turbo to generate a professional commit message.
+- Logs the message in `daily_log.txt`.
+- Commits and pushes the changes back to the `main` branch.
 
-### Backend
-- **OpenAI API:** GPT-powered predictive analytics for traffic forecasting.
-- **RESTful APIs:** Communication between frontend and backend predictive analytics service.
-- **Automated Commit Bot:** Utilizes OpenAI Assistant for automating continuous commits, improving development speed and efficiency.
+---
 
-### CI/CD Pipeline
-- **GitHub Actions:** Automated pipeline for continuous integration and deployment.
-- **Testing Automation:** Regular testing and validation to ensure reliability and functionality.
+## 🧠 Powered by
+- [GitHub Actions](https://github.com/features/actions)
+- [OpenAI Python SDK](https://github.com/openai/openai-python)
+- `gpt-3.5-turbo` for commit message generation.
 
-## Getting Started
+---
 
-### Prerequisites
-- [Flutter SDK](https://flutter.dev/docs/get-started/install)
-- OpenAI API Key
-- GitHub Repository Access
+## 🔧 Files Included
 
-### Installation
-1. Clone the repository:
-   ```sh
-   git clone https://github.com/your-repo/continuous_commit-traffic-prediction-app.git
-   ```
+- **`.github/workflows/daily_commit.yml`**  
+  Workflow file that schedules and runs the automation.
 
-2. Navigate into the project directory:
-   ```sh
-   cd continuous_commit-traffic-prediction-app
-   ```
+- **`scripts/daily_commit.py`**  
+  Python script that interacts with the OpenAI API and appends the response to `daily_log.txt`.
 
-3. Install dependencies:
-   ```sh
-   flutter pub get
-   ```
+- **`daily_log.txt`**  
+  Log file storing all daily commit messages with UTC timestamps.
 
-4. Configure environment variables:
-   - Create a `.env` file and add your OpenAI API key.
+---
 
-### Usage
-- Run the app:
-  ```sh
-  flutter run
-  ```
+## 🔐 Secrets Required
 
+Set the following repository secrets in GitHub:
+
+| Secret Name         | Description                          |
+|---------------------|--------------------------------------|
+| `OPENAI_API_KEY`    | Your OpenAI API key                  |
+| `GITHUB_TOKEN`      | Provided by GitHub by default        |
+
+---
+
+## 🚀 Setup Instructions
+
+1. Clone or fork this repo.
+2. Add your OpenAI API key to your repository secrets.
+3. Customize the `prompt` in `daily_commit.py` if desired.
+4. Enjoy automated, AI-generated daily commits!
+
+---
+
+## 🗓️ Schedule
+
+The workflow is triggered:
+- Automatically every day at **9:00 AM UTC**
+- Manually via the GitHub **"Run workflow"** button
+
+```yaml
+cron: '0 9 * * *'  # Every day at 9 AM UTC
+```
+
+---
+
+## 📄 Sample Log Output
+
+```
+2025-03-30 09:00:00 UTC: Refactored minor components for better clarity and performance.
+`
+```
 ### Deployment
 Continuous automated commits trigger continuous deployment via GitHub Actions, enabling seamless updates.
 
