@@ -57,3 +57,5 @@ Commit made on Mon 03/17/2025 at 15:49:40.72
 2025-04-13 09:23:37 UTC: Refactored code to improve performance and readability, optimized database queries, and fixed a bug related to user authentication.
 2025-04-14 09:27:10 UTC: Refactored code for improved performance and readability. Fixed bugs related to user authentication and enhanced error handling.
 2025-04-14 09:27:11 UTC: Implemented new user authentication system with Firebase for enhanced security and user management.
+2025-04-15 09:26:32 UTC: Refactored code structure and optimized data processing functions for improved efficiency and readability.
+2025-04-15 09:26:34 UTC: Added new feature to allow users to customize their profile settings, including displaying their preferred language and timezone. Fixed bug related to image upload in profile settings. Updated user interface for improved user experience.
