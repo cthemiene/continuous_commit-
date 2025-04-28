@@ -83,3 +83,5 @@ Commit made on Mon 03/17/2025 at 15:49:40.72
 2025-04-26 09:22:31 UTC: Refactored code for improved readability and efficiency, fixed bugs related to user authentication module.
 2025-04-27 09:22:25 UTC: Implemented new feature to allow users to filter search results in the app by location, improving user experience.
 2025-04-27 09:22:26 UTC: Refactored code for improved performance and readability by optimizing loops and reducing redundant calculations.
+2025-04-28 10:52:29 UTC: Add logic for user authentication on the back-end API.
+2025-04-28 10:52:31 UTC: Refactored code to improve readability and modularity. Fixed bugs in user authentication logic and optimized database queries for better performance.
