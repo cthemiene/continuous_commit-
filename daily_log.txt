@@ -191,3 +191,5 @@ Commit made on Mon 03/17/2025 at 15:49:40.72
 2025-06-21 09:25:55 UTC: Refactored codebase to improve readability and efficiency. Fixed bugs related to data processing and optimized database queries.
 2025-06-22 09:24:33 UTC: Refactored code to improve efficiency and readability by implementing better design patterns and optimizing performance.
 2025-06-22 09:24:34 UTC: Refactored code for improved efficiency and readability, optimized database queries, and fixed minor bugs.
+2025-06-23 09:29:38 UTC: Refactored code for improved performance and readability with optimized algorithms and efficient data structures.
+2025-06-23 09:29:40 UTC: Implemented new feature to allow users to reset their password using a reset link sent to their email. Added validation checks and updated the backend logic for handling password reset requests.
