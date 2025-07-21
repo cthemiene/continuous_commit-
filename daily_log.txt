@@ -245,3 +245,5 @@ Commit made on Mon 03/17/2025 at 15:49:40.72
 2025-07-19 09:25:57 UTC: Refactored code for improved efficiency and readability.
 2025-07-20 09:25:57 UTC: Refactored codebase to improve performance and readability. Fixed bugs in authentication system. Updated documentation for API endpoints.
 2025-07-20 09:25:58 UTC: Refactored code for improved efficiency and readability, optimized database queries for faster performance.
+2025-07-21 09:34:38 UTC: Implement user authentication and authorization functionality using JWT tokens in the backend API. Add login and registration endpoints and protect routes that require authentication.
+2025-07-21 09:34:39 UTC: Implemented new feature for user profiles including image upload and bio editing functionality. Fixed bug related to password reset functionality in login page. Fixed styling issue on checkout page for mobile devices.
