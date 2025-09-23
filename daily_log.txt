@@ -369,3 +369,5 @@ Commit made on Mon 03/17/2025 at 15:49:40.72
 2025-09-21 09:21:01 UTC: Refactored code for improved efficiency and readability.
 2025-09-22 09:28:53 UTC: Refactored code for improved efficiency and readability.
 2025-09-22 09:28:55 UTC: Refactored code to improve performance and fixed minor bugs in the application.
+2025-09-23 09:25:57 UTC: Added modifications to improve user experience on the website, including optimizing loading times and enhancing accessibility features.
+2025-09-23 09:25:59 UTC: Added new feature to user profile page to display recent activity and added functionality for users to reset their password.
