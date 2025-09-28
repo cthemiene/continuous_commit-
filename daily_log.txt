@@ -379,3 +379,5 @@ Commit made on Mon 03/17/2025 at 15:49:40.72
 2025-09-26 09:25:53 UTC: Refactored code for improved readability and efficiency in handling user inputs.
 2025-09-27 09:21:03 UTC: Implemented new feature to allow users to filter search results by category on the website.
 2025-09-27 09:21:04 UTC: Refactored code to improve performance and readability, optimized database queries, and resolved a bug related to user authentication.
+2025-09-28 09:21:07 UTC: Updated login functionality to include Google and Facebook social login options for improved user experience and accessibility.
+2025-09-28 09:21:09 UTC: Refactored code to improve performance and readability, optimized database queries for faster data retrieval.
