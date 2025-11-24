@@ -5,7 +5,7 @@ from datetime import datetime
 client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 
 prompt = '''
-Suggest concise code additions and write a concise, professional daily commit message summarizing today's update.
+Suggest concise code additions and write a concise professional daily commit message summarizing today's update.
 '''
 
 response = client.chat.completions.create(
@@ -14,7 +14,7 @@ response = client.chat.completions.create(
     temperature=1,
     max_completion_tokens=4000,
     top_p=1,
-    frequency_penalty=0,
+    frequency_penalty=1,
     presence_penalty=0
 )
 
